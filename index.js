@@ -26,6 +26,16 @@ client.on('connected', (address, port) => {
     client.action('quazarxx', 'reporting for duty.')
 });
 
+client.on("subscription", function (channel, username, methods) {
+    client.say(channel, `${username} joined Planet Q! Welcome friend!`)
+})
+
+client.on("resub", function (channel, username, months, message, userstate, methods) {
+    let cumulativeMonths = userstate['msg-param-cumulative-months']
+
+    client.say(channel, `${username} renewed their residency to Planet Q! They've lived here for ${cumulativeMonths} months!`)
+})
+
 client.on('chat', (channel, user, message, self) => {
     if (self || !message.startsWith(prefix)) return;
 
