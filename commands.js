@@ -51,5 +51,9 @@ module.exports = {
         } else {
             client.say(channel, `Commands for everyone: ${commandList.everyone}`)
         }
+    },
+
+    razer: function (client, message, args, user, channel, self) {
+        client.say(channel, 'Mouse: Mamba Elite - https://razer.a9yw.net/x9mxN3\n Keyboard (Main): Blackwidow Elite (Yellow Switch) - https://razer.a9yw.net/Zdmky0\n Keyboard (Competitive): Huntsman Tournament Edition - https://razer.a9yw.net/qn0Ryq\n Headset: Nari Ultimate Wireless - https://razer.a9yw.net/6bxaEE')
     }
 }
