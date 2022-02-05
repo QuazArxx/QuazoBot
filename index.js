@@ -1,7 +1,10 @@
-const tmi = require('tmi.js');
-const { prefix, token } = require('./config.json');
+const tmi = require('tmi.js')
+const { prefix, token } = require('./config.json')
 
 const commands = require('./commands')
+const timers = require('./timers.json')
+
+let x = 0
 
 const options = {
     options: {
@@ -16,15 +19,15 @@ const options = {
         password: token
     },
     channels: ['quazarxx']
-};
+}
 
-const client = new tmi.client(options);
+const client = new tmi.client(options)
 
-client.connect();
+client.connect()
 
 client.on('connected', (address, port) => {
     client.action('quazarxx', 'reporting for duty.')
-});
+})
 
 client.on("subscription", function (channel, username, methods) {
     client.say(channel, `${username} joined Planet Q! Welcome friend!`)
@@ -48,3 +51,16 @@ client.on('chat', (channel, user, message, self) => {
         commands[cmd](client, message, args, user, channel, self)
     }
 })
+
+setInterval(() => {
+    timer()
+}, 900000);
+
+function timer() {
+    client.say('quazarxx', timers[x])
+    x++
+
+    if (x == timers.length) {
+        x = 0
+    }
+}
