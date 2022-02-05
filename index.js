@@ -54,7 +54,7 @@ client.on('chat', (channel, user, message, self) => {
 
 setInterval(() => {
     timer()
-}, 900000);
+}, 900000)
 
 function timer() {
     client.say('quazarxx', timers[x])
