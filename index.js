@@ -5,6 +5,7 @@ const commands = require('./commands')
 const timers = require('./timers.json')
 
 let x = 0
+let messageCount = 0
 
 const options = {
     options: {
@@ -40,6 +41,10 @@ client.on("resub", function (channel, username, months, message, userstate, meth
 })
 
 client.on('chat', (channel, user, message, self) => {
+    if (!self){
+        messageCount++
+    }
+
     if (self || !message.startsWith(prefix)) return;
 
     const args = message.slice(prefix.length).trim().split(' ');
@@ -53,7 +58,10 @@ client.on('chat', (channel, user, message, self) => {
 })
 
 setInterval(() => {
-    timer()
+    if (messageCount >= 5){
+        timer()
+        messageCount = 0
+    } else return
 }, 900000)
 
 function timer() {
