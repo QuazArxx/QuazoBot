@@ -57,7 +57,7 @@ module.exports = {
         client.say(channel, 'Mouse: Mamba Elite - https://razer.a9yw.net/x9mxN3\n Keyboard (Main): Blackwidow Elite (Yellow Switch) - https://razer.a9yw.net/Zdmky0\n Keyboard (Competitive): Huntsman Tournament Edition - https://razer.a9yw.net/qn0Ryq\n Headset: Nari Ultimate Wireless - https://razer.a9yw.net/6bxaEE')
     },
 
-    deathCount: 0,
+    deathCount: 10,
     died: function (client, message, args, user, channel, self) {
         this.deathCount++
         client.say(channel, `Quaz died again(what a surprise) and is now at ${this.deathCount} deaths`)
